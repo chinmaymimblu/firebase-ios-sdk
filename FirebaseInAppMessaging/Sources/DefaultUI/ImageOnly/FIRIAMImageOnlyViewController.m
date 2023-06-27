@@ -105,68 +105,68 @@
   [self setupRecognizers];
 }
 
-- (void)viewDidLayoutSubviews {
-  [super viewDidLayoutSubviews];
-
-  if (!self.imageOnlyMessage.imageData) {
-    return;
-  }
-
-  // do the calculation in viewDidLayoutSubViews since self.view.window.frame is only
-  // reliable at this time
-
-  // Calculate the size of the image view under the constraints:
-  // 1 Retain the image ratio
-  // 2 Have at least 30 point of margines around four sides of the image view
-
-  CGFloat minimalMargine = 30;  // 30 points
-  CGFloat maxImageViewWidth = self.view.window.frame.size.width - minimalMargine * 2;
-  CGFloat maxImageViewHeight = self.view.window.frame.size.height - minimalMargine * 2;
-
-  // Factor in space for the top notch on iPhone X*.
-#if defined(__IPHONE_11_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
-  if (@available(iOS 11.0, *)) {
-    maxImageViewHeight -= self.view.safeAreaInsets.top;
-  }
-#endif  // defined(__IPHONE_11_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
-
-  CGFloat adjustedImageViewHeight = self.imageOriginalSize.height;
-  CGFloat adjustedImageViewWidth = self.imageOriginalSize.width;
-
-  if (adjustedImageViewWidth > maxImageViewWidth || adjustedImageViewHeight > maxImageViewHeight) {
-    if (maxImageViewHeight / maxImageViewWidth >
-        self.imageOriginalSize.height / self.imageOriginalSize.width) {
-      // the image is relatively too wide compared against displayable area
-      adjustedImageViewWidth = maxImageViewWidth;
-      adjustedImageViewHeight =
-          adjustedImageViewWidth * self.imageOriginalSize.height / self.imageOriginalSize.width;
-
-      FIRLogDebug(kFIRLoggerInAppMessagingDisplay, @"I-FID110002",
-                  @"Use max available image display width as %lf", adjustedImageViewWidth);
-    } else {
-      // the image is relatively too narrow compared against displayable area
-      adjustedImageViewHeight = maxImageViewHeight;
-      adjustedImageViewWidth =
-          adjustedImageViewHeight * self.imageOriginalSize.width / self.imageOriginalSize.height;
-      FIRLogDebug(kFIRLoggerInAppMessagingDisplay, @"I-FID110003",
-                  @"Use max avilable image display height as %lf", adjustedImageViewHeight);
-    }
-  } else {
-    // image can be rendered fully at its original size
-    FIRLogDebug(kFIRLoggerInAppMessagingDisplay, @"I-FID110001",
-                @"Image can be fully displayed in image only mode");
-  }
-
-  CGRect rect = CGRectMake(0, 0, adjustedImageViewWidth, adjustedImageViewHeight);
-  //self.imageView.frame = rect;
-  //self.imageView.center = self.view.center;
-
-  CGFloat closeButtonCenterX = CGRectGetMaxX(self.imageView.frame);
-  CGFloat closeButtonCenterY = CGRectGetMinY(self.imageView.frame);
-  self.closeButton.center = CGPointMake(closeButtonCenterX, closeButtonCenterY);
-
-  [self.view bringSubviewToFront:self.closeButton];
-}
+//- (void)viewDidLayoutSubviews {
+//  [super viewDidLayoutSubviews];
+//
+//  if (!self.imageOnlyMessage.imageData) {
+//    return;
+//  }
+//
+//  // do the calculation in viewDidLayoutSubViews since self.view.window.frame is only
+//  // reliable at this time
+//
+//  // Calculate the size of the image view under the constraints:
+//  // 1 Retain the image ratio
+//  // 2 Have at least 30 point of margines around four sides of the image view
+//
+//  CGFloat minimalMargine = 30;  // 30 points
+//  CGFloat maxImageViewWidth = self.view.window.frame.size.width - minimalMargine * 2;
+//  CGFloat maxImageViewHeight = self.view.window.frame.size.height - minimalMargine * 2;
+//
+//  // Factor in space for the top notch on iPhone X*.
+//#if defined(__IPHONE_11_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
+//  if (@available(iOS 11.0, *)) {
+//    maxImageViewHeight -= self.view.safeAreaInsets.top;
+//  }
+//#endif  // defined(__IPHONE_11_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
+//
+//  CGFloat adjustedImageViewHeight = self.imageOriginalSize.height;
+//  CGFloat adjustedImageViewWidth = self.imageOriginalSize.width;
+//
+//  if (adjustedImageViewWidth > maxImageViewWidth || adjustedImageViewHeight > maxImageViewHeight) {
+//    if (maxImageViewHeight / maxImageViewWidth >
+//        self.imageOriginalSize.height / self.imageOriginalSize.width) {
+//      // the image is relatively too wide compared against displayable area
+//      adjustedImageViewWidth = maxImageViewWidth;
+//      adjustedImageViewHeight =
+//          adjustedImageViewWidth * self.imageOriginalSize.height / self.imageOriginalSize.width;
+//
+//      FIRLogDebug(kFIRLoggerInAppMessagingDisplay, @"I-FID110002",
+//                  @"Use max available image display width as %lf", adjustedImageViewWidth);
+//    } else {
+//      // the image is relatively too narrow compared against displayable area
+//      adjustedImageViewHeight = maxImageViewHeight;
+//      adjustedImageViewWidth =
+//          adjustedImageViewHeight * self.imageOriginalSize.width / self.imageOriginalSize.height;
+//      FIRLogDebug(kFIRLoggerInAppMessagingDisplay, @"I-FID110003",
+//                  @"Use max avilable image display height as %lf", adjustedImageViewHeight);
+//    }
+//  } else {
+//    // image can be rendered fully at its original size
+//    FIRLogDebug(kFIRLoggerInAppMessagingDisplay, @"I-FID110001",
+//                @"Image can be fully displayed in image only mode");
+//  }
+//
+//  CGRect rect = CGRectMake(0, 0, adjustedImageViewWidth, adjustedImageViewHeight);
+//  //self.imageView.frame = rect;
+//  //self.imageView.center = self.view.center;
+//
+//  CGFloat closeButtonCenterX = CGRectGetMaxX(self.imageView.frame);
+//  CGFloat closeButtonCenterY = CGRectGetMinY(self.imageView.frame);
+//  self.closeButton.center = CGPointMake(closeButtonCenterX, closeButtonCenterY);
+//
+//  [self.view bringSubviewToFront:self.closeButton];
+//}
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
