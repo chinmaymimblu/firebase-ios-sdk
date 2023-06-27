@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rA8-LH-EYm">
-                                <rect key="frame" x="44" y="59" width="294" height="222"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="image-view-in-image-only-view" label="In-app message image">
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYW-0X-e5S">
                                 <rect key="frame" x="313" y="42" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,8 +28,22 @@
                                     <action selector="closeButtonClicked:" destination="x01-lq-3r6" eventType="touchUpInside" id="wxI-c1-DJ3"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rA8-LH-EYm">
+                                <rect key="frame" x="0.0" y="477" width="414" height="419"/>
+                                <accessibility key="accessibilityConfiguration" identifier="image-view-in-image-only-view" label="In-app message image">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="419" id="c40-pv-ych"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rA8-LH-EYm" secondAttribute="bottom" id="Gqf-zb-d9O"/>
+                            <constraint firstItem="rA8-LH-EYm" firstAttribute="leading" secondItem="ef6-R8-q1S" secondAttribute="leading" id="HxB-2D-wk4"/>
+                            <constraint firstAttribute="trailing" secondItem="rA8-LH-EYm" secondAttribute="trailing" id="reu-Nz-gur"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="vYW-0X-e5S" id="330-bY-24I"/>
@@ -46,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZ8-Cx-8wo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-913.04347826086962" y="-17.119565217391305"/>
+            <point key="canvasLocation" x="-913.04347826086962" y="-17.410714285714285"/>
         </scene>
         <!--Banner View Controller-->
         <scene sceneID="zJa-hc-tKk">
@@ -387,8 +393,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aft-rr-icV" userLabel="Card view">
-                                <rect key="frame" x="87" y="87" width="240" height="240"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aft-rr-icV" userLabel="Card view">
+                                <rect key="frame" x="87" y="84" width="240" height="728"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gB0-8W-G9z">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="160"/>
@@ -455,8 +461,8 @@
                                             <constraint firstItem="elG-N9-aqH" firstAttribute="width" secondItem="Tmr-ar-k7h" secondAttribute="width" id="dXF-bM-hYF"/>
                                         </constraints>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZE-3x-WHk" userLabel="Primary action button">
-                                        <rect key="frame" x="163" y="186" width="53" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZE-3x-WHk" userLabel="Primary action button">
+                                        <rect key="frame" x="163" y="674" width="53" height="30"/>
                                         <accessibility key="accessibilityConfiguration" identifier="card-primary-action-button"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="pxm-yD-xhm"/>
@@ -466,8 +472,8 @@
                                             <action selector="primaryActionButtonTapped:" destination="oTF-1C-LZP" eventType="touchUpInside" id="Jk0-dp-Qgj"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Feg-VM-jUf" userLabel="Secondary action button">
-                                        <rect key="frame" x="65" y="186" width="74" height="30"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Feg-VM-jUf" userLabel="Secondary action button">
+                                        <rect key="frame" x="65" y="674" width="74" height="30"/>
                                         <accessibility key="accessibilityConfiguration" identifier="card-secondary-action-button"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="bpF-9w-pDe"/>

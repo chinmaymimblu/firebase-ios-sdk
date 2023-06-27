@@ -158,8 +158,8 @@
   }
 
   CGRect rect = CGRectMake(0, 0, adjustedImageViewWidth, adjustedImageViewHeight);
-  self.imageView.frame = rect;
-  self.imageView.center = self.view.center;
+  //self.imageView.frame = rect;
+  //self.imageView.center = self.view.center;
 
   CGFloat closeButtonCenterX = CGRectGetMaxX(self.imageView.frame);
   CGFloat closeButtonCenterY = CGRectGetMinY(self.imageView.frame);
